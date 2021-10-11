@@ -45,4 +45,18 @@ ON OrderID = s.OrderID
 
 SELECT * FROM ListadoProductos;
 
+--EJERCICIO 3
+ALTER VIEW ListadoProductos
+AS
+SELECT 
+p.ProductName producto,
+c.CategoryName categoria,
+s.ProductID productosincluidosenlaorden
+FROM Products p
+FULL JOIN Categories c
+ON p.CategoryID = c.CategoryID
+FULL JOIN  dbo.[Order Details] s
+ON OrderID = s.OrderID
+WHERE OrderID IS  NOT NULL
+;
 
